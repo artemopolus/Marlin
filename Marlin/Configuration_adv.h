@@ -2671,7 +2671,7 @@
   #define INTERPOLATE      true
 
   #if AXIS_IS_TMC(X) //Exacto Motor Drivers
-    #define X_CURRENT       1400       // (mA) RMS current. Multiply by 1.414 for peak current.
+    #define X_CURRENT       1000       // (mA) RMS current. Multiply by 1.414 for peak current.
     #define X_CURRENT_HOME  X_CURRENT  // (mA) RMS current for sensorless homing
     #define X_MICROSTEPS     64        // 0..256
     #define X_RSENSE          0.11
@@ -2689,7 +2689,7 @@
   #endif
 
   #if AXIS_IS_TMC(Y) //Exacto Motor Drivers
-    #define Y_CURRENT       1400
+    #define Y_CURRENT       1000
     #define Y_CURRENT_HOME  Y_CURRENT
     #define Y_MICROSTEPS     64
     #define Y_RSENSE          0.11
@@ -2707,7 +2707,7 @@
   #endif
 
   #if AXIS_IS_TMC(Z) //Exacto Motor Drivers
-    #define Z_CURRENT       1400
+    #define Z_CURRENT       1000
     #define Z_CURRENT_HOME  Z_CURRENT
     #define Z_MICROSTEPS     32
     #define Z_RSENSE          0.11
@@ -2770,7 +2770,7 @@
   #endif
 
   #if AXIS_IS_TMC(E0) //Exacto Motor Drivers
-    #define E0_CURRENT      1300
+    #define E0_CURRENT      1000
     #define E0_MICROSTEPS    32
     #define E0_RSENSE         0.11
     #define E0_CHAIN_POS     -1
@@ -2934,7 +2934,8 @@
    * Define your own with:
    * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
    */
-  #define CHOPPER_TIMING CHOPPER_DEFAULT_12V        // All axes (override below)
+  //Exacto Motor Drivers
+  #define CHOPPER_TIMING CHOPPER_DEFAULT_24V        // All axes (override below)
   //#define CHOPPER_TIMING_X  CHOPPER_TIMING        // For X Axes (override below)
   //#define CHOPPER_TIMING_X2 CHOPPER_TIMING_X
   //#define CHOPPER_TIMING_Y  CHOPPER_TIMING        // For Y Axes (override below)
