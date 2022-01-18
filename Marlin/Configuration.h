@@ -102,7 +102,7 @@
  *
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT -1 //Exacto Motor Drivers
+#define SERIAL_PORT 1 //Exacto Motor Drivers
 
 /**
  * Serial Port Baud Rate
@@ -123,7 +123,7 @@
  * Currently Ethernet (-2) is only supported on Teensy 4.1 boards.
  * :[-2, -1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT_2 1 //Exacto display
+#define SERIAL_PORT_2 -1 //Exacto display
 //#define BAUDRATE_2 250000   // Enable to override BAUDRATE
 
 /**
