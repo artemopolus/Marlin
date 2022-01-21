@@ -929,14 +929,14 @@
  * Override with M92
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 100*4, 100*4, 4000*2, 288*2 } //Exacto Motor Drivers
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 401, 401 , 4000, 288*2 } //Exacto Motor Drivers
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 400, 400, 5, 25 } //Exacto Motor Drivers
+#define DEFAULT_MAX_FEEDRATE          { 400, 200, 4, 25 } //Exacto Motor Drivers
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -949,7 +949,7 @@
  * Override with M201
  *                                      X, Y, Z [, I [, J [, K]]], E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_ACCELERATION      { 750, 400, 50, 10000 }
+#define DEFAULT_MAX_ACCELERATION      { 750, 300, 50, 10000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -964,9 +964,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION          700    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          300    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  1000    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   700    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -1181,7 +1181,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 0, -29, -1 }
+#define NOZZLE_TO_PROBE_OFFSET { -2, -29, -0.9 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1191,10 +1191,10 @@
 //#define XY_PROBE_FEEDRATE (300)
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
-#define Z_PROBE_FEEDRATE_FAST (50)
+#define Z_PROBE_FEEDRATE_FAST (4)
 
 // Feedrate (mm/min) for the "accurate" probe of each point
-#define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 2)
+#define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST * 0.75)
 
 /**
  * Probe Activation Switch
@@ -1258,9 +1258,9 @@
  * Example: `M851 Z-5` with a CLEARANCE of 4  =>  9mm from bed to nozzle.
  *     But: `M851 Z+1` with a CLEARANCE of 2  =>  2mm from bed to nozzle.
  */
-#define Z_CLEARANCE_DEPLOY_PROBE    5 // Z Clearance for Deploy/Stow Exacto Bed Adjustment
-#define Z_CLEARANCE_BETWEEN_PROBES  3 // Z Clearance between probe points Exacto Bed Adjustment
-#define Z_CLEARANCE_MULTI_PROBE     3 // Z Clearance between multiple probes Exacto Bed Adjustment
+#define Z_CLEARANCE_DEPLOY_PROBE    3 // Z Clearance for Deploy/Stow Exacto Bed Adjustment
+#define Z_CLEARANCE_BETWEEN_PROBES  2 // Z Clearance between probe points Exacto Bed Adjustment
+#define Z_CLEARANCE_MULTI_PROBE     2 // Z Clearance between multiple probes Exacto Bed Adjustment
 //#define Z_AFTER_PROBING           5 // Z position after probing is done
 
 #define Z_PROBE_LOW_POINT          -2 // Farthest distance below the trigger-point to go before stopping Exacto Bed Adjustment
@@ -1388,7 +1388,7 @@
 #define Y_MIN_POS 0 //Exacto Bed
 #define Z_MIN_POS 0 //Exacto Bed
 #define X_MAX_POS 250 //Exacto Bed
-#define Y_MAX_POS 310 //Exacto Bed
+#define Y_MAX_POS 320 //Exacto Bed
 #define Z_MAX_POS 290 //Exacto Bed
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
@@ -1564,8 +1564,8 @@
  */
 #define PREHEAT_BEFORE_LEVELING //Exacto Bed Adjustment
 #if ENABLED(PREHEAT_BEFORE_LEVELING)
-  #define LEVELING_NOZZLE_TEMP 50   // (°C) Only applies to E0 at this time
-  #define LEVELING_BED_TEMP     70
+  #define LEVELING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
+  #define LEVELING_BED_TEMP     90
 #endif
 
 /**
@@ -1756,7 +1756,7 @@
 #endif
 
 // Homing speeds (mm/min)
-#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (4*60) }
+#define HOMING_FEEDRATE_MM_M { (300), (200), (4) }
 
 
 // Validate that endstops are triggered on homing moves
@@ -1874,7 +1874,7 @@
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
-#define PREHEAT_2_TEMP_HOTEND 240
+#define PREHEAT_2_TEMP_HOTEND 245
 #define PREHEAT_2_TEMP_BED    120
 #define PREHEAT_2_TEMP_CHAMBER 35
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
